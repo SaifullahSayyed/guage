@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── Design System Custom Properties ───────────────────────────────────── */
+:root {
+  /* Backgrounds */
+  --bg-primary: #050508;
+  --bg-secondary: #0d0d14;
+  --bg-tertiary: #13131f;
+  --bg-glass: rgba(255, 255, 255, 0.03);
+
+  /* Brand */
+  --brand-purple: #7c3aed;
+  --brand-purple-light: #a78bfa;
+  --brand-purple-glow: rgba(124, 58, 237, 0.4);
+
+  /* Skill Status */
+  --skill-owned: #10b981;
+  --skill-owned-glow: rgba(16, 185, 129, 0.3);
+  --skill-gap: #f43f5e;
+  --skill-gap-glow: rgba(244, 63, 94, 0.3);
+  --skill-rising: #f59e0b;
+  --skill-neutral: #6b7280;
+  --skill-fading: #374151;
+
+  /* Text */
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --text-muted: #4b5563;
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-active: rgba(124, 58, 237, 0.5);
+
+  /* Score */
+  --score-low: #f43f5e;
+  --score-mid: #f59e0b;
+  --score-high: #10b981;
+}
+
+/* ── Reset ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Glass Card ─────────────────────────────────────────────────────────── */
+.glass-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.02) inset,
+    0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Gap card hover glow ─────────────────────────────────────────────────── */
+.gap-card:hover {
+  box-shadow: 0 0 20px var(--skill-gap-glow), 0 4px 20px rgba(0,0,0,0.4);
+}
+
+/* ── Skeleton shimmer ───────────────────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.04) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Spinner ────────────────────────────────────────────────────────────── */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Pulse dot (live indicator) ─────────────────────────────────────────── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* ── Typography helpers ─────────────────────────────────────────────────── */
+.text-display {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.text-h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.25rem; font-weight: 600; }
+.text-h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem;  font-weight: 600; }
+.text-h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.125rem; font-weight: 500; }
+.text-body  { font-family: 'Inter', sans-serif; font-size: 1rem; line-height: 1.6; }
+.text-small { font-family: 'Inter', sans-serif; font-size: 0.875rem; }
+.text-mono  { font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; }
+
+/* ── Scrollbar ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--brand-purple); border-radius: 2px; }
+
+/* ── R3F canvas full-fill ───────────────────────────────────────────────── */
+canvas { display: block; }
+
+/* ── Utility ────────────────────────────────────────────────────────────── */
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ── Responsive helpers ─────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .text-display { font-size: 2.2rem; }
+  .text-h1 { font-size: 1.5rem; }
+}
